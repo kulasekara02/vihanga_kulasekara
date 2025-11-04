@@ -1,384 +1,1222 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
-    <title>VIHANGA DASUN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vihanga Kulasekara | Software Engineer & Master's Student</title>
     <link rel="icon" href="assets/img/tm-easy-profile.jpg">
-    <meta content="" name="description">
-    <meta content="" name="keywords">
-
-    <!-- Favicons -->
-    <!-- <link href="assets/img/1665656020385.jpg" rel="apple-touch-icon"> -->
-
+    
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #00d4ff;
+            --secondary-color: #6c5ce7;
+            --accent-color: #a29bfe;
+            --bg-dark: #0a0e27;
+            --bg-darker: #060917;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+        html {
+            scroll-behavior: smooth;
+        }
 
-    <!-- =======================================================
-  * Template Name: iPortfolio - v3.9.1
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        #particles-bg {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(10, 14, 39, 0.95);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 5%;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--glass-bg);
+            color: var(--text-light);
+            border: 2px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: var(--glass-border);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .profile-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--glass-border);
+            box-shadow: 0 20px 60px rgba(0, 212, 255, 0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-bg {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.3;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.1);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list i {
+            color: var(--primary-color);
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            width: 30px;
+        }
+
+        .info-list strong {
+            color: var(--text-light);
+            margin-right: 0.5rem;
+            min-width: 120px;
+        }
+
+        .info-list span {
+            color: var(--text-gray);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-progress {
+            width: 120px;
+            height: 120px;
+            margin: 1.5rem auto;
+            position: relative;
+        }
+
+        .circular-progress {
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle-bg {
+            fill: none;
+            stroke: var(--glass-border);
+            stroke-width: 10;
+        }
+
+        .progress-circle {
+            fill: none;
+            stroke: url(#gradient);
+            stroke-width: 10;
+            stroke-linecap: round;
+            stroke-dasharray: 339.292;
+            stroke-dashoffset: 339.292;
+            transition: stroke-dashoffset 2s ease;
+        }
+
+        .skill-card:hover .progress-circle {
+            animation: fillProgress 2s ease forwards;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            width: 50%;
+            padding: 0 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            top: 0;
+            box-shadow: 0 0 20px var(--primary-color);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.15);
+        }
+
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            color: var(--text-gray);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .contact-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card p, .contact-card a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 999;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
+            .profile-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding: 0 0 0 3rem;
+                text-align: left;
+            }
+
+            .timeline-item .timeline-dot {
+                left: -10px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--bg-darker);
+                width: 100%;
+                padding: 2rem;
+                gap: 1.5rem;
+                transition: left 0.3s ease;
+                border-top: 1px solid var(--glass-border);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
 </head>
-
 <body>
+    <!-- Animated Background -->
+    <div id="particles-bg"></div>
 
-    <!-- ======= Mobile nav toggle button ======= -->
-    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">VK</div>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
 
-    <!-- ======= Header ======= -->
-    <header id="header">
-        <div class="d-flex flex-column">
-
-            <div class="profile">
-                <img src="assets/img/tm-easy-profile.jpg" alt="" class="img-fluid rounded-circle">
-                <h1 class="text-light"><a href="index.html">VIHANGA KULASEKARA</a></h1>
-                <div class="social-links mt-3 text-center">
-                    <a href="https://twitter.com/Dasunpriya4?t=8hg4fgyTxVY6Fs7DivSvvw&s=09" class="twitter"><i class="bx bxl-twitter"></i></a>
-                    <a href="https://www.facebook.com/vihaga.dasunpriua" class="facebook"><i class="bx bxl-facebook"></i></a>
-                    <a href="https://www.instagram.com/kule__xx/" class="instagram"><i class="bx bxl-instagram"></i></a>
-                    <a href="https://github.com/kulasekara02" class="google-plus"><i class="bx bxl-github"></i></a>
-                    <a href="https://www.linkedin.com/in/vihanga-dasun/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="fade-in-up delay-1">
+                    Hi, I'm <span class="gradient-text">Vihanga Kulasekara</span>
+                </h1>
+                <p class="subtitle fade-in-up delay-2">Software Engineer & Master's Student</p>
+                <p class="fade-in-up delay-3">
+                    Pursuing MSc in Computer Science while crafting innovative software solutions. 
+                    Specializing in web development, database technologies, and building scalable applications.
+                </p>
+                <div class="cta-buttons fade-in-up delay-4">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Get in Touch
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <i class="fas fa-user"></i> Learn More
+                    </a>
+                </div>
+                <div class="social-links fade-in-up delay-4">
+                    <a href="https://github.com/kulasekara02" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/vihanga-dasun/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://twitter.com/Dasunpriya4" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/kule__xx/" target="_blank"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-
-            <nav id="navbar" class="nav-menu navbar">
-                <ul>
-                    <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-                    <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-                    <li><a href="#resume" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-                    <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>contact</span></a></li>
-
-                </ul>
-            </nav>
-            <!-- .nav-menu -->
-        </div>
-    </header>
-    <!-- End Header -->
-
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-        <div class="hero-container" data-aos="fade-in">
-            <h1>VIHANGA KULASEKARA</h1>
-            <p> <span class="typed" data-typed-items="Developer, Freelancer"></span></p>
+            <div class="hero-image fade-in-up delay-2">
+                <div class="profile-container">
+                    <div class="profile-bg"></div>
+                    <img src="assets/img/tm-easy-profile.jpg" alt="Vihanga Kulasekara" class="profile-img">
+                </div>
+            </div>
         </div>
     </section>
-    <!-- End Hero -->
 
-    <main id="main">
-
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>About</h2>
-                    <p>Hello, I am currently pursuing my Master of Science in Computer Science at the Transport and Telecommunication Institute. My educational journey began with a Bachelor's degree in Software Engineering from Cardiff Metropolitan University,
-                        where I acquired a solid foundation in advanced programming, computer networks, business analytics, and computer ethics. This educational background has provided me with a comprehensive understanding of the diverse aspects of software
-                        engineering.
-                    </p>
-                    <BR>
-                    <p>Presently, I am flourishing as an Associate Software Engineer at Ceylinco General. In this role, I actively engage with Oracle technologies, leveraging Oracle databases, packages, functions, triggers, and complex SQL queries. My responsibilities
-                        also include seamless integration of APIs and AJAX, allowing me to apply my skills in real-world scenarios.</p>
-                       <BR>
-                    <p>Throughout my academic and professional journey, I have cultivated proficiency in various programming languages, including PHP, SQL, JavaScript, CSS, Git, and version control. This diverse experience has not only refined my technical
-                        abilities but also provided me with a deep understanding of software design principles and industry best practices.</p>
-                       <BR>
-                    <p>My passion lies in developing innovative software solutions that address real-world challenges while enhancing user experiences. I am deeply committed to the ethical and responsible application of technology, continually striving to
-                        stay updated on the latest industry trends and best practices. I enthusiastically welcome opportunities to expand my knowledge and skill set, viewing each challenge as an opportunity for growth and meaningful contribution to the
-                        dynamic field of software engineering.</p>
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-4" data-aos="fade-right">
-                        <!-- <img src="assets/img/1668416586775.jpg" class="img-fluid" alt=""> -->
-                      <!--  01092025--> 
-                      <!--  <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="light" data-type="HORIZONTAL" data-vanity="vihanga-dasun" data-version="v1">
-                            <a class="badge-base__link LI-simple-link" href="https://lk.linkedin.com/in/vihanga-dasun?trk=profile-badge"></a>
-                        </div>-->
-
-                          <div class="badge-base LI-profile-badge" data-locale="en_US" data-size="large" data-theme="dark" data-type="VERTICAL" data-vanity="vihanga-dasun" data-version="v1"><a class="badge-base__link LI-simple-link" href="https://lv.linkedin.com/in/vihanga-dasun?trk=profile-badge">Vihanga Kulasekara</a></div>
-              
-                    </div>
-                    <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-                        <h3>Web Developer</h3>
-                        <p class="fst-italic">
-                            Currently working with web based projects also interested about oracle database technologies.
-                        </p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>08 Feb 2001</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+371 28 698 203</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Colombo Sri Lanka</span></li>
-                                </ul>
-                            </div>
-                            <div class="col-lg-6">
-                                <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>23</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>Bsc (hons)</span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>kule99@outlook.com</span></li>
-
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- <p>
-                            Officiis eligendi itaque labore et dolorum mollitia officiis optio vero. Quisquam sunt adipisci omnis et ut. Nulla accusantium dolor incidunt officia tempore. Et eius omnis. Cupiditate ut dicta maxime officiis quidem quia. Sed et consectetur qui quia
-                            repellendus itaque neque. Aliquid amet quidem ut quaerat cupiditate. Ab et eum qui repellendus omnis culpa magni laudantium dolores.
-                        </p> -->
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- End About Section -->
-
-        <!-- ======= Facts Section ======= -->
-
-        <!-- End Facts Section -->
-
-        <!-- ======= Skills Section ======= -->
-        <section id="skills" class="skills section-bg">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Skills</h2>
-
-                </div>
-
-                <div class="row skills-content">
-
-                    <div class="col-lg-6" data-aos="fade-up">
-
-                        <div class="progress">
-                            <span class="skill">HTML <i class="val">70%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <span class="skill">CSS <i class="val">60%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <span class="skill">JavaScript <i class="val">60%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-                        <div class="progress">
-                            <span class="skill">PHP <i class="val">80%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                        <div class="progress">
-                            <span class="skill">Git, & Version Control<i class="val">80%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="progress">
-                            <span class="skill">C# and .NET<i class="val">50%</i></span>
-                            <div class="progress-bar-wrap">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </section>
-        <!-- End Skills Section -->
-
-        <!-- ======= Resume Section ======= -->
-        <section id="resume" class="resume">
-            <div class="container">
-
-                <div class="section-title">
-                    <h2>Resume</h2>
-                    <!-- <p></p> -->
-                </div>
-
-                <div class="row">
-                    <div class="col-lg-6" data-aos="fade-up">
-                        <h3 class="resume-title">Sumary</h3>
-                        <div class="resume-item pb-0">
-                            <h4>Trainee Software Engineer</h4>
-                            <h4>Ceylinco Insurance Plc (09/03/2022 - 29/02/2024)</h4>
-                            <p><em> Integrate software components into a fully functional software system , Deploy programs and evaluate user feedback
-                              Troubleshoot.</em></p>
-                            <ul>
-                                <li>Ceylinco Insurance PLC,Colombo,Sri Lanka</li>
-                                <li>+371 28 698 203</li>
-
-                            </ul>
-                        </div>
-
-                        <h3 class="resume-title">Education</h3>
-                        <div class="resume-item">
-                            <h4>Master Of Natural Sciences In Computer Science</h4>
-                            <h5>2024 Reading</h5>
-                            <p><em>Transport and Telecommunication Institute</em></p>
-                        </div>
-
-                        <div class="resume-item">
-                            <h4>Bsc Hons in Software Engineering</h4>
-                            <h5>2019 October - 2022 October</h5>
-                            <p><em>Cardiff Metropolitan University</em></p>
-                        </div>
-                        <div class="resume-item">
-                            <h4>HND in Computing and Software Engineering</h4>
-                            <h5>2018 February - 2019 October</h5>
-                            <p><em>ICBT Campus</em></p>
-
-                        </div>
-                        <div class="resume-item">
-                            <h4>Diploma In ICT</h4>
-                            <h5>2018 February - 2018 October</h5>
-                            <p><em>ICBT Campus</em></p>
-
-                        </div>
-                        <div class="resume-item">
-                            <h4>Diploma in English</h4>
-                            <h5>2018 February - 2018 October </h5>
-                            <p><em>ICBT Campus</em></p>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-                        <h3 class="resume-title">Projects</h3>
-                        <div class="resume-item">
-                            <h4>Modern Online Sales Prediction and Recommendation system for Online Express supermarket </h4>
-                            <h5>BSC Dissertation Project </h5>
-                            <p><em>September 2021 - October 2021</em></p>
-                            <ul>
-
-
-                                <li> Face-to-face client meetings, taking instructions and generating ideas </li>
-                                <li> Developing my own designs into effective sites with great UX.</li>
-                                <li> Develop the main function of sales prediction with client requirement.</li>
-                                <li> Maintaining the day to day running of the busy online store.</li>
-                                <li> Testing for device and browser compatibility</li>
-
-                            </ul>
-                        </div>
-                        <div class="resume-item">
-                            <h4>Tech Solutions Mobile Phone Store Website</h4>
-                            <h5>HND Final Group Project August</h5>
-                            <p><em>2019 - September 2019</em></p>
-                            <ul>
-                                <li>Designing and delivering high quality bespoke cross browser websites.</li>
-                                <li>Providing a high level of client support and respond to technical queries.</li>
-                                <li>Ensuring quality standards, customer expectations and deadlines are met.</li>
-                                <li>Auditing completed jobs (my work and others) to ensure the client’s requirements have been fulfilled.</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- End Resume Section -->
-
-
-
-
-        <!-- ======= Contact Section ======= -->
-        <section id="contact" class="contact">
-            <div class="container">
-
-                <div class="section-title">
-                    <div class="row" data-aos="fade-in">
-
-                        <!-- Your contact information -->
-                        <div class="info">
-                            <div class="address">
-                                <i class="bi bi-geo-alt"></i>
-                                <h4>Location:</h4>
-                                <p>Riga Latvia-Europe</p>
-                            </div>
-
-                            <div class="email">
-                                <i class="bi bi-envelope"></i>
-                                <h4>Email:</h4>
-                                <p><a href="mailto:kule99@outlook.com?subject=Me&body=Hello!">kule99@outlook.com</a></p>
-                            </div>
-
-                            <div class="phone">
-                                <i class="bi bi-phone"></i>
-                                <h4>Call:</h4>
-                                <p>+371 28 698 203</p>
-                            </div>
-                        </div>
-
-
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-        </section>
-
-    </main>
-    <!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <div class="copyright">
-                &copy; Copyright <strong><span>Vihnga Kulasekara</span></strong>
-            </div>
-
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2><span class="gradient-text">About</span> Me</h2>
+            <p>Get to know more about my background and expertise</p>
         </div>
+        <div class="about-content">
+            <div class="glass-card">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Who I Am</h3>
+                <p style="color: var(--text-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                    Currently pursuing my Master of Science in Computer Science at the Transport and Telecommunication Institute, 
+                    I bring a solid foundation from my Bachelor's degree in Software Engineering from Cardiff Metropolitan University.
+                </p>
+                <p style="color: var(--text-gray); line-height: 1.8; margin-bottom: 1.5rem;">
+                    As an Associate Software Engineer at Ceylinco General, I actively work with Oracle technologies, 
+                    including databases, packages, functions, triggers, and complex SQL queries, along with API integration and AJAX.
+                </p>
+                <p style="color: var(--text-gray); line-height: 1.8;">
+                    My passion lies in developing innovative software solutions that address real-world challenges while 
+                    enhancing user experiences. I'm committed to ethical technology application and continuously staying 
+                    updated with industry trends and best practices.
+                </p>
+            </div>
+            <div class="glass-card">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.8rem;">Quick Info</h3>
+                <ul class="info-list">
+                    <li>
+                        <i class="fas fa-calendar"></i>
+                        <strong>Birthday:</strong>
+                        <span>February 8, 2001</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <strong>Location:</strong>
+                        <span>Riga, Latvia / Colombo, Sri Lanka</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-graduation-cap"></i>
+                        <strong>Degree:</strong>
+                        <span>BSc (Hons) Software Engineering</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-graduate"></i>
+                        <strong>Current:</strong>
+                        <span>MSc Computer Science</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <strong>Email:</strong>
+                        <span>kule99@outlook.com</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <strong>Phone:</strong>
+                        <span>+371 28 698 203</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-briefcase"></i>
+                        <strong>Position:</strong>
+                        <span>Associate Software Engineer</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-building"></i>
+                        <strong>Company:</strong>
+                        <span>Ceylinco General</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Technical <span class="gradient-text">Skills</span></h2>
+            <p>Technologies and tools I work with</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-html5 skill-icon"></i>
+                <h3>HTML</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <defs>
+                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:var(--primary-color);stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:var(--secondary-color);stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke-dashoffset: 101.85;" data-progress="70"></circle>
+                    </svg>
+                    <div class="progress-text">70%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fab fa-css3-alt skill-icon"></i>
+                <h3>CSS</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 135.72;" data-progress="60"></circle>
+                    </svg>
+                    <div class="progress-text">60%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fab fa-js skill-icon"></i>
+                <h3>JavaScript</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 135.72;" data-progress="60"></circle>
+                    </svg>
+                    <div class="progress-text">60%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fab fa-php skill-icon"></i>
+                <h3>PHP</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 67.86;" data-progress="80"></circle>
+                    </svg>
+                    <div class="progress-text">80%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fab fa-git-alt skill-icon"></i>
+                <h3>Git & Version Control</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 67.86;" data-progress="80"></circle>
+                    </svg>
+                    <div class="progress-text">80%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>Oracle & SQL</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 67.86;" data-progress="80"></circle>
+                    </svg>
+                    <div class="progress-text">80%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-code skill-icon"></i>
+                <h3>C# & .NET</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 169.65;" data-progress="50"></circle>
+                    </svg>
+                    <div class="progress-text">50%</div>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <i class="fas fa-server skill-icon"></i>
+                <h3>API Integration</h3>
+                <div class="skill-progress">
+                    <svg class="circular-progress" viewBox="0 0 120 120">
+                        <circle class="progress-circle-bg" cx="60" cy="60" r="54"></circle>
+                        <circle class="progress-circle" cx="60" cy="60" r="54" 
+                                style="stroke: url(#gradient1); stroke-dashoffset: 101.85;" data-progress="70"></circle>
+                    </svg>
+                    <div class="progress-text">70%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="section-title">
+            <h2>Education & <span class="gradient-text">Experience</span></h2>
+            <p>My academic and professional journey</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - Present</div>
+                    <h3>Master of Natural Sciences in Computer Science</h3>
+                    <h4>Transport and Telecommunication Institute</h4>
+                    <p>Advanced studies in computer science, focusing on cutting-edge technologies and research methodologies.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">March 2022 - February 2024</div>
+                    <h3>Trainee Software Engineer</h3>
+                    <h4>Ceylinco Insurance PLC</h4>
+                    <p>Integrated software components, deployed programs, evaluated user feedback, and troubleshooted various technical issues. Worked extensively with Oracle technologies.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">October 2019 - October 2022</div>
+                    <h3>BSc (Hons) in Software Engineering</h3>
+                    <h4>Cardiff Metropolitan University</h4>
+                    <p>Acquired solid foundation in advanced programming, computer networks, business analytics, and computer ethics.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">September 2021 - October 2021</div>
+                    <h3>Modern Online Sales Prediction System</h3>
+                    <h4>BSc Dissertation Project</h4>
+                    <p>Developed a comprehensive sales prediction and recommendation system for Express supermarket with face-to-face client collaboration and UX design.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">February 2018 - October 2019</div>
+                    <h3>HND in Computing and Software Engineering</h3>
+                    <h4>ICBT Campus</h4>
+                    <p>Foundation studies in computing principles and software development methodologies.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In <span class="gradient-text">Touch</span></h2>
+            <p>Feel free to reach out for collaborations or just a friendly chat</p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3>Location</h3>
+                <p>Riga, Latvia</p>
+                <p>Colombo, Sri Lanka</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <h3>Email</h3>
+                <a href="mailto:kule99@outlook.com">kule99@outlook.com</a>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3>Phone</h3>
+                <a href="tel:+37128698203">+371 28 698 203</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-social">
+            <a href="https://github.com/kulasekara02" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/vihanga-dasun/" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com/Dasunpriya4" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/kule__xx/" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p>&copy; 2024 Vihanga Kulasekara. All rights reserved.</p>
     </footer>
-    <!-- End  Footer -->
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/typed.js/typed.min.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <script src="https://platform.linkedin.com/badges/js/profile.js" async defer type="text/javascript"></script>
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
+    <script>
+        // Particle Background Animation
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles-bg');
+            const particleCount = 50;
 
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const size = Math.random() * 3 + 1;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.background = Math.random() > 0.5 ? 'var(--primary-color)' : 'var(--secondary-color)';
+                particle.style.animation = `float ${duration}s ${delay}s infinite ease-in-out`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Add float animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes float {
+                0%, 100% {
+                    transform: translateY(0) translateX(0);
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        createParticles();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll to Top Button
+        const scrollTopBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 500) {
+                scrollTopBtn.classList.add('active');
+            } else {
+                scrollTopBtn.classList.remove('active');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and timeline items
+        document.querySelectorAll('.glass-card, .skill-card, .timeline-content, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
